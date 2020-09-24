@@ -113,9 +113,11 @@ var sumBelow = function(n) {
     sum += sumBelow(n - 1);
   }
 
-  
+  //if the value is less than 0
   if (n < 0) {
+    //let sum be a negative num plus one
     sum = n + 1;
+    //add the value of the function with an argument of n + 1
     sum += sumBelow(n + 1);
   }
 
@@ -186,6 +188,14 @@ var compareStr = function(str1, str2) {
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+  //go through every element in the string
+  if (str.length === 0) {
+    return [];
+  }
+
+  var result = createArray(str.slice(1));
+  result.unshift(str[0]);
+  return result;
 };
 
 // 17. Reverse the order of an array
