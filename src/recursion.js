@@ -44,14 +44,26 @@ var sum = function(array) {
 var arraySum = function(array) {
   //if array is empty
   if (array.length === 0) {
-    return 0;
     //return 0
+    return 0;
   }
-  //create copy of array
-  var copy = array.slice();
-
-
-  return arraySum(copy);
+  
+  //Initialize sum to be 0
+  var sum = 0;
+  //utilizing a for loop
+  for (var i = 0; i < array.length; i++) {
+    //if the current element is an array
+    if (Array.isArray(array[i])) {
+      //add sum to arraySum with an argument of the current element
+      sum += arraySum(array[i]);
+      //otherwise
+    } else {
+      //add sum to the current element
+      sum += array[i];
+    }
+  }
+  //return the total
+  return sum;
 };
 
 // 4. Check if a number is even.
@@ -86,6 +98,9 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  
+
+  return sumBelow(n);
 };
 
 // 6. Get the integers within a range (x, y).
