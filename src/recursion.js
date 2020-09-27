@@ -301,11 +301,11 @@ var countOccurrence = function(array, value) {
     return 0;
   }
 
-  var result = countOccurrence(array.slice(1), value);
+  var count = countOccurrence(array.slice(1), value);
   if (value === array[0]){
-    result++;
+    count++;
   }
-  return result;
+  return count;
 };
 
 // 21. Write a recursive version of map.
@@ -384,7 +384,31 @@ var countValuesInObj = function(obj, value) {
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
+//I
+  //Object of key value pairs and objects as values
+//O
+  //the input obj reassigned old input keys to be the new input keys
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+  //if the type of the input object is indeed an object
+  if (typeof obj === 'object') {
+    //iterate over the object
+    for (var key in obj) {
+      //if the current key is equal to the oldKey
+      if (key === oldKey) {
+        //reassign the oldkey to be the new key
+        obj[newKey] = obj[oldKey];
+        //delete the oldkey
+        delete obj[oldKey];
+      }
+      //if the currentValue is an object
+      if (typeof obj[key] === 'object') {
+        //utilize recursion calling the function an argument the currentValue, oldkey, newKey
+        replaceKeysInObj(obj[key], oldKey, newKey);
+      }
+    }
+  }
+  //return obj;
+  return obj;
 };
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
