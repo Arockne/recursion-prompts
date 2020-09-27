@@ -472,7 +472,33 @@ var capitalizeFirst = function(array) {
 //   e: {e: {e: 2}, ee: 'car'}
 // };
 // nestedEvenSum(obj1); // 10
+//I
+  //An object with key and values and values as objects
+//O
+  //sum of all the EVEN numbers in the object of objects
 var nestedEvenSum = function(obj) {
+  //initiate the sum var to be assign the value of 0
+  var sum = 0;
+  //if the obj is indeed an obj
+  if (typeof obj === 'object') {
+    //iterate over the obj
+    for (var key in obj) {
+      //if the value is an obj
+      if (typeof obj[key] === 'object') {
+        //increment the sum to equal nesteEvenSum recursivly
+        sum += nestedEvenSum(obj[key]);
+        //otherwise
+      } else {
+        //if the value is even
+        if (obj[key] % 2 === 0) {
+          //increment sum to be the value in the object
+          sum += obj[key];
+        }
+      }
+    }
+  }
+  //return sum
+  return sum;
 };
 
 // 30. Flatten an array containing nested arrays.
