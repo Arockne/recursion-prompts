@@ -149,7 +149,7 @@ var range = function(x, y) {
     result = range(x - 1, y);
     //if the value of x minus one does not equal y
     if (x - 1 !== y) {
-      //store the value of x minus one into the result array
+      //store the value of x minus one into the result array to the front
       result.unshift(x - 1)
     }
   }
@@ -263,6 +263,35 @@ var buildList = function(value, length) {
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
 var fizzBuzz = function(n) {
+  //if n is 0
+  if (n === 0) {
+    //return an empty array
+    return [];
+  }
+  var result;
+  //store the last call to fizzBuzz with an argument of n minus 1 in a result variable
+  result = fizzBuzz(n - 1);
+  //if n is multiple of 3 and 5
+  if (n % 3 === 0 && n % 5 === 0) {
+    //assign n to be 'FizzBuzz'
+    n = 'FizzBuzz';
+  }
+  
+  //if n is multiple of 3
+  if (n % 3 === 0) {
+    //assign n to be 'Fizz'
+    n = 'Fizz';
+  }
+
+  //if n is multiple of 5
+  if (n % 5 === 0) {
+    //assing n to be 'Buzz'
+    n = 'Buzz';
+  }
+  //store n into result array
+  result.push(n.toString());
+  //return result
+  return result;
 };
 
 // 20. Count the occurence of a value in a list.
