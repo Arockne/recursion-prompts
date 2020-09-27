@@ -127,6 +127,34 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  //if y is equal to x + 1
+  if (x === y) {
+    return [];
+    //return y in an array
+  }
+  
+  var result;
+   
+  //if x is less than y
+  if (x < y) {
+    //store the value of the first item in the stack
+    result = range(x, y - 1);  
+    //store the rest of the values in the array
+    if (x !== y - 1) {
+      result.push(y - 1);
+    } 
+  //otherwise
+  } else {
+    //store the result calling range with the arguments of x minus 1 and y
+    result = range(x - 1, y);
+    //if the value of x minus one does not equal y
+    if (x - 1 !== y) {
+      //store the value of x minus one into the result array
+      result.unshift(x - 1)
+    }
+  }
+  //return the array of numbers
+  return result;
 };
 
 // 7. Compute the exponent of a number.
@@ -235,13 +263,6 @@ var buildList = function(value, length) {
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
 var fizzBuzz = function(n) {
-  if (n === 0) {
-    return [];
-  }
-
-  if (n === 1) {
-    return '1';
-  }
 };
 
 // 20. Count the occurence of a value in a list.
