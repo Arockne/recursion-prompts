@@ -508,8 +508,8 @@ var nestedEvenSum = function(obj) {
 //O
   //An array with all the values in the array of arrays in one array
 //Another way to solve this
-  //utilize reduce
-   //concat the accumulator with current item if it is not an array 
+  //utilize reduce on the input array
+   //return the concatenation of the accumulator with current item if it is not an array 
      //if it is an array utlize recursion on the current item
 var flatten = function(array) {
   //initiate an empty array
