@@ -237,9 +237,8 @@ var reverseArr = function(array) {
     return [];
   }
 
-  var lastElement = array.pop();
-  var reverse = reverseArr(array);
-  reverse.unshift(lastElement);
+  var reverse = reverseArr(array.slice(1));
+  reverse.push(array[0]);
   return reverse;
 };
 
