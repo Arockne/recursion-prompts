@@ -600,7 +600,29 @@ var letterTally = function(str, obj) {
 // elements should not be changed.
 // compress([1,2,2,3,4,4,5,5,5]) // [1,2,3,4,5]
 // compress([1,2,2,3,4,4,2,5,5,5,4,4]) // [1,2,3,4,2,5,4]
+//I
+  //Array of numbers
+//O
+  //An array of non-duplicates
 var compress = function(list) {
+  //if the list is empty
+  if (list.length === 1) {
+    //return an array
+    return list;
+  }
+
+  //store the call to the function with an argument of removing the first element
+  var result = compress(list.slice(1));
+  
+  //if the current element is not equal to the next element in the callstack
+  if (result[0] !== list[0]) {
+    //store the current element in the array
+    result.unshift(list[0]);
+  }
+
+  //return array
+  return result;
+  
 };
 
 // 33. Augment every element in a list with a new value where each element is an array
