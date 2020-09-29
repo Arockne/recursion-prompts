@@ -455,12 +455,47 @@ var nthFibo = function(n) {
 // 27. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
+//I
+  //An array of strings
+//O
+  //An array of strings all in capital letters
 var capitalizeWords = function(array) {
+  //if the array is empty
+  if (array.length === 0) {
+    //return an array
+    return [];
+  }
+  
+  //store the function and call it with a copy of the array removing the first element
+  var result = capitalizeWords(array.slice(1));
+  //utilizing recursion, store the value from the input array on the callstack capitalized
+  result.unshift(array[0].toUpperCase())
+  //return the resulting array
+  return result;
 };
 
 // 28. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car','poop','banana']); // ['Car','Poop','Banana']
+//I
+  //an array of strings in all lowercase letters
+//O
+  //an array of strings with the first letter capitalized
 var capitalizeFirst = function(array) {
+  //if the array is empty
+  if (array.length === 0) {
+    //return an empty array
+    return [];
+  }
+  //store the function and call it with an argument of removing the first item of the array
+  var result = capitalizeFirst(array.slice(1));
+  //Get first letter of current element in call stack and upper case it
+  var firstLetter = array[0][0].toUpperCase();
+  //Remove the first letter of the current element of the call stack
+  var word = array[0].slice(1);
+  //concatenate the first letter and the rest of the element
+  result.unshift(firstLetter + word);
+  //return result;
+  return result;
 };
 
 // 29. Return the sum of all even numbers in an object containing nested objects.
