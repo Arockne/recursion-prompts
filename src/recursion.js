@@ -651,14 +651,60 @@ var augmentElements = function(array, aug) {
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
+//I
+  //Array of numbers with multiple zeros
+//O
+  //Array of numbers with zeros taken out that are by other zero
 var minimizeZeroes = function(array) {
+  //if the array is empty
+  if (array.length === 1) {
+    //return an empty array
+    return array;
+  }
+  //store the function call with the argument of removing the first element of the array
+  var result = minimizeZeroes(array.slice(1));
+  //if the current element in the result is a zero and the current element in the callstack is not a zero
+  if (result[0] === 0 && array[0] !== 0 || result[0] !== 0) {
+    result.unshift(array[0]);
+  }
+  //store the element in the callstack
+  //return the result
+  return result;
+
 };
 
 // 35. Alternate the numbers in an array between positive and negative regardless of
 // their original sign. The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
+//I
+  //an array of mixed negative and positive numbers
+//O
+  //An array of mixed negative and positive numbers on every other index
 var alternateSign = function(array) {
+  //if the array is empty
+  if (array.length === 0) {
+    //return an empty array
+    return [];
+  }
+  //remove the last element of the array
+  var lastElement = array.pop();
+  //store the call the function with the argument of the array
+  var result = alternateSign(array);
+  //store the absolute value of the current element of the callstack
+  var currentElement = Math.abs(lastElement);
+  //if the result array's length is odd
+  if (result.length % 2 === 1) {
+    result.push(-currentElement);
+  } else {
+    result.push(currentElement);
+  }
+    //insert a negative number
+  //if the result array's length is even
+    //insert a positive number
+
+  //return result
+  return result;
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
