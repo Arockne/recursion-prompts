@@ -628,7 +628,24 @@ var compress = function(list) {
 // 33. Augment every element in a list with a new value where each element is an array
 // itself.
 // augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
+//I
+  //an array of array and a number to input into each array
+//O
+  //an array of arrays with the augment num in each array
 var augmentElements = function(array, aug) {
+  //if the array is empty
+  if (array.length === 0) {
+    //return an empty array
+    return [];
+  }
+  //store the call of the function with the argument of removing the first element of the array and the aug num
+  var result = augmentElements(array.slice(1), aug);
+  //push the aug num into the current element
+  array[0].push(aug);
+  //push the current element into the result array
+  result.unshift(array[0]);
+  //return result
+  return result;
 };
 
 // 34. Reduce a series of zeroes to a single 0.
